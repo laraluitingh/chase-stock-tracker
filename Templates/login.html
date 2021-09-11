@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Chase</h1>
+<p>Hi there, welcome Chase the ultimate platform for all thing stocks, finance, Cryptocurrency and more...</p>
+<h3>Login</h3>
+<form action="/login_action" method="post" >
+<input type="text" name="email" placeholder="email">
+<br>
+<input type="text" name="password" placeholder="password">
+<br>
+<button>Login</button>
+</form>
+
+{%endblock%}
