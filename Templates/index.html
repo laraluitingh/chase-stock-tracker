@@ -1,8 +1,58 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {%for stock in stocks%}
+<div class="main-stocks">
+  <p class="stock-name">{{stock.short_name}}</p>
+  <p class="stock-price">{{stock.market_price}}</p>
+  <p class="stock-change">
+    <span>{{stock.market_change}}</span>
+    <span>{{stock.market_change_percent}}%</span>
+  </p>
+</div>
+{% endfor %}
 
-{% block content %}
-<a href="/login">Login</a>
-<br>
-<a href="/signup">signup</a>
+<div class="fixTableHead">
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Price(Intraday)</th>
+        <th>Change</th>
+        <th>% Change</th>
+        <th>Volume</th>
+        <th>Avg Volume(3 months)</th>
+        <th>Market Cap</th>
+        <th>PE Ratio (TTM)</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for i in active_stocks%}
+        <tr>
+            <td>{{i["Symbol"]}}</td>
+            <td>{{i["Name"]}}</td>
+            <td>{{i["Price (Intraday)"]}}</td>
+            <td>{{i["Change"]}}</td>
+            <td>{{i["% Change"]}}</td>
+            <td>{{i["Volume"]}}</td>
+            <td>{{i["Avg Vol (3 month)"]}}</td>
+            <td>{{i["Market Cap"]}}</td>
+            <td>{{i["PE Ratio (TTM)"]}}</td>
+        
+        </tr>
+        {%endfor%}
+      
+    </tbody>
+  </table>
+</div>
+
+<!-- Takes to long deleting -->
+<!-- {%for news in news_list%}
+<div>
+    <h4><a href="{{news.url}}">{{news.title}}</a></h4>
+    <img src="{{news.image}}" alt="dsiplay-picture">
+    <p>{{news.pubdate}}</p>
+</div>
+
+
+{% endfor %} -->
 
 {%endblock%}

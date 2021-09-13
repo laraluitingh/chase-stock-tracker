@@ -1,0 +1,85 @@
+nav ul li{
+    display: inline-block;
+    text-decoration: none;
+    list-style: none;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+nav{
+    background-color: #1D2228;
+    color:white;
+    height: 80px;
+    width: 100%;
+}
+
+.logo{
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 120px;
+    font: bold;
+    display: inline-block;
+    color: #FB8122;
+}
+
+nav ul{
+    float: right;
+    margin-right:120px;
+
+}
+
+nav ul li a{
+    color: white;
+    font-size:1;
+    text-transform: uppercase;
+}
+
+.main-stocks{
+    display: inline-block;
+    background-color: #1D2228;
+
+}
+
+.stock-name{
+    color:#FB8122;
+    font-size: 25px;
+}
+
+.stock-price{
+    color: white;
+    font-size: 20px;
+}
+
+.stock-change{
+    color: white;
+}
+
+.fixTableHead {
+    overflow-y: auto;
+    height: 600px;
+  }
+  .fixTableHead thead th {
+    position: sticky;
+    top: 0;
+  }
+  table {
+    border-collapse: collapse;        
+    width: 80%;
+  }
+  th,
+  td {
+    padding: 8px 15px;
+    border: 2px solid #529432;
+  }
+  th {
+    background: #ABDD93;
+  }

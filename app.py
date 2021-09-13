@@ -4,8 +4,14 @@ from flask.wrappers import Request
 import psycopg2
 from werkzeug.utils import redirect
 import bcrypt
+import yahoo_fin.stock_info as si
+from yahoo_fin import news
+import requests
+import pandas as pd
+import json
 
-from models.model import get_user, insert_user
+
+from models.model import get_user, insert_user, get_stock
 
 
 app = Flask(__name__)
@@ -16,7 +22,19 @@ app.config['SECRET_KEY'] = '123Lara'
 
 @app.route('/')
 def getIndexPage():
-    return render_template('index.html')
+        stocks=[]
+        nasdaq=get_stock('^NDX')
+        dow_jones=get_stock('^DJI')
+        oil=get_stock('CL=F')
+        gold=get_stock('GC=F')
+        stocks.append(nasdaq)
+        stocks.append(dow_jones)
+        stocks.append(gold)
+        stocks.append(oil)
+        data=si.get_day_most_active()
+        active_stocks=json.loads(data.to_json(orient = 'records'))
+        print(type(active_stocks))
+        return render_template('index.html', stocks=stocks, active_stocks=active_stocks)
         
 
 @app.route('/login')
@@ -53,5 +71,22 @@ def insertUser():
         password_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         insert_user(email, first_name, last_name, password_hash)
         return redirect('/') 
+
+@app.route('/account')
+def getProfile():
+        return render_template('account.html')
+
+@app.route('/search')
+def getSearchFunction():
+        return render_template('search.html')
+
+@app.route('/search-action')
+def searchStock():
+        stock=request.args.get('stock')
+        stock_data=get_stock(stock)
+        stock_search=True
+        news1=news.get_yf_rss(stock)
+        print(news1)
+        return render_template('search.html', stock_data=stock_data, stock_search=stock_search)
 
 app.run(debug=True, port=3000)
