@@ -129,6 +129,12 @@ def get_stock(stock):
 #         news_items.append(news) 
 #     return news_items
 
+
+def addToWhatchList(stock_code, user_id):
+    sql_write("INSERT INTO whatched_stocks(stock_code, id) VALUES(%s, %s)", [stock_code, user_id])
+
+
+
         
 
        

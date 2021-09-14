@@ -11,7 +11,7 @@ import pandas as pd
 import json
 
 
-from models.model import get_user, insert_user, get_stock
+from models.model import get_user, insert_user, get_stock, addToWhatchList
 
 
 app = Flask(__name__)
@@ -45,6 +45,7 @@ def getLoginPage():
 def getLoginPageAction():
         email=request.form.get('email')
         password=request.form.get('password')
+        print(get_user(email))
         try:
                 password_hash=get_user(email).password
                 valid = bcrypt.checkpw(password.encode(), password_hash.encode())
@@ -88,5 +89,12 @@ def searchStock():
         news1=news.get_yf_rss(stock)
         print(news1)
         return render_template('search.html', stock_data=stock_data, stock_search=stock_search)
+
+@app.route('/add_to_whatchlist', methods=['POST'])
+def add_to_whatchlist():
+        user_id = session.get('user_id')
+        stock_code=request.form.get('stock_code')
+        addToWhatchList('stock_code', user_id)
+        return redirect('/search') 
 
 app.run(debug=True, port=3000)
