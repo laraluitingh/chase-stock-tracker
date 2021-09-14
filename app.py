@@ -37,9 +37,9 @@ def getIndexPage():
         return render_template('index.html', stocks=stocks, active_stocks=active_stocks)
         
 
-@app.route('/login')
-def getLoginPage():
-        return render_template('login.html')
+# @app.route('/login')
+# def getLoginPage():
+#         return render_template('login.html')
 
 @app.route('/login_action', methods=['POST'])
 def getLoginPageAction():
