@@ -107,14 +107,15 @@ th {
 }
 
 .login-inner-box{
-    height:500px;
-    width:500px;
+    height:fit-content;
+    width:fit-content;
     background-color:black;
     color:white;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding:50px;
 }
 
 .inner-inner-login{
@@ -151,6 +152,11 @@ th {
 
 .sign-up-button{
     font-size: 18px;
+}
+
+.whatched-stocks{
+  overflow-y: auto;
+  height: 300px;
 }
 
 

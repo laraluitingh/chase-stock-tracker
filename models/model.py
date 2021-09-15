@@ -28,6 +28,12 @@ class Stock:
         self.w_range=w_range
         self.day_range=day_range
 
+class UserWatchlist:
+    def __init__(self, user_id, whatchlist):
+        self.user_id=user_id
+        self.whatchlist=whatchlist
+    
+
 class News:
     def __init__(self,id, title, summary, pubdate, url, image):
         self.id = id
@@ -55,8 +61,8 @@ def get_stock(stock):
     data["symbol"],
     data["currency"],
     data["regularMarketPrice"],
-    data["regularMarketChange"],
-    data["regularMarketChangePercent"],
+    round(data["regularMarketChange"],2),
+    round(data["regularMarketChangePercent"],2),
     data["regularMarketPreviousClose"],
     data["regularMarketOpen"],
     data["averageDailyVolume3Month"],
@@ -131,7 +137,25 @@ def get_stock(stock):
 
 
 def addToWhatchList(stock_code, user_id):
-    sql_write("INSERT INTO whatched_stocks(stock_code, id) VALUES(%s, %s)", [stock_code, user_id])
+    results=sql_select("SELECT stock_code, id FROM whatched_stocks WHERE stock_code=%s AND id=%s",[stock_code, user_id])
+    print(results)
+    if(results==[]):
+        sql_write("INSERT INTO whatched_stocks(stock_code, id) VALUES(%s,%s)", [stock_code, user_id])
+
+def get_user_by_id(id):
+  results=sql_select("SELECT id, first_name, last_name, email, password_hash FROM users WHERE id=%s", [id])
+  for row in results:
+      user=User(row[0], row[1], row[2], row[3], row[4])
+  return user
+
+def get_whatchlist(id):
+    results=sql_select("SELECT id, stock_code FROM whatched_stocks WHERE id=%s", [id])
+    whatchlist=[]
+    for row in results:
+        stock_whatched=UserWatchlist(row[0], row[1])
+        whatchlist.append(stock_whatched)
+    return whatchlist
+
 
 
 
