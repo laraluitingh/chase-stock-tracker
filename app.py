@@ -9,6 +9,7 @@ from yahoo_fin import news
 import requests
 import pandas as pd
 import json
+import os
 
 
 from models.model import get_user, insert_user, get_stock, addToWhatchList, get_user_by_id, get_whatchlist
@@ -18,9 +19,15 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '123Lara'
 
+DB_URL = os.environ.get("DATABASE_URL", "dbname=chase-stocks")
+
 
 @app.route('/')
 def getIndexPage():
+    conn = psycopg2.connect(DB_URL)
+    cur = conn.cursor()
+    cur.execute('SELECT 1', []) # Query to check that the DB connected
+    conn.close()
     stocks = []
     nasdaq = get_stock('^NDX')
     dow_jones = get_stock('^DJI')
