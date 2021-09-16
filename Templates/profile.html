@@ -5,17 +5,26 @@
       <h1 class="login-title">Your Profile</h1>
       <p>Name: <span>{{user.first_name}} {{user.last_name}}</span></p>
       <p>Email: <span>{{user.email}}</span></p>
-      <form action="">
-        <button class="login">Edit</button>
+       <form action="/edit-profile">
+      <button class="login">Edit</button>
+    </form>
+      <form action="/logout">
+        <button class="login">Sign out</button>
       </form>
+
       <h1>Your whatchlist</h1>
       <div class="whatched-stocks">
         <table>
           {%for stock in whatchlist%}
           <tr>
-            <td><a href="/search-action?stock={{stock.symbol}}">{{stock.short_name}}</a></td>
+            <td>
+              <a href="/search-action?stock={{stock.symbol}}"
+                >{{stock.short_name}}</a
+              >
+            </td>
             <td>{{stock.market_price}}</td>
             <td>{{stock.market_change_percent}}%</td>
+            <td><a href="/delete_from_whatchlist/{{stock.symbol}}">Delete</a></td>
           </tr>
           {%endfor%}
         </table>

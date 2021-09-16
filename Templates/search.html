@@ -1,34 +1,50 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {%if message%}
+<div class="incorrect-singup">{{message}}</div>
+{%endif%} {%if stock_search%}
+<div class="login-box">
+  <div class="login-inner-box">
+    <div class="inner-inner-login">
+      <form action="search-action">
+        <input type="text" name="stock" placeholder="Stock symbol" class="form__field"/>
+        <button class="login">Search</button>
+      </form>
+      <div>
+        <h1>{{stock_data.short_name}} <span>({{stock_data.symbol}})</span></h1>
+        <p>{{stock_data.name}}. Currency in {{stock_data.currency}}</p>
+        <h4>
+          {{stock_data.market_price}} <span>{{stock_data.market_change}}</span>
+          <span>{{stock_data.market_change_percent}}%</span>
+        </h4>
+        <ul>
+          <li>Previous Close:{{stock_data.previous_close}}</li>
+          <li>Open: {{stock_data.market_open}}</li>
+          <li>Average Volume: {{stock_data.avg_volume}}</li>
+          <li>Day's Range: {{stock_data.day_range}}</li>
+          <li>52 Week Range: {{stock_data.w_range}}</li>
+        </ul>
+      </div>
 
-{% block content %}
-{%if stock_search%}
-<form action="search-action">
-    <input type="text" name="stock" placeholder="Stock symbol">
-    <button>Search</button>
-</form>
-<div>
-    <h1>{{stock_data.short_name}} <span>({{stock_data.symbol}})</span></h1>
-    <p>{{stock_data.name}}. Currency in {{stock_data.currency}}</p>
-    <h4>{{stock_data.market_price}} <span>{{stock_data.market_change}}</span> <span>{{stock_data.market_change_percent}}%</span></h4>
-    <ul>
-        <li>Previous Close:{{stock_data.previous_close}}</li>
-        <li>Open: {{stock_data.market_open}}</li>
-        <li>Average Volume: {{stock_data.avg_volume}}</li>
-        <li>Day's Range: {{stock_data.day_range}}</li>
-        <li>52 Week Range: {{stock_data.w_range}}</li>
-    </ul>
+      <form action="/add_to_whatchlist" method="POST">
+        <input
+          type="text"
+          name="stock_code"
+          style="display: none"
+          value="{{stock_data.symbol}}"
+        />
+        <button class="login">Add to Whatchlist</button>
+      </form>
+    </div>
+  </div>
 </div>
-
-<form action="/add_to_whatchlist" method="POST">
-    <input type="text" name="stock_code" style="display:none;" value={{stock_data.symbol}}>
-    <button>Add to Whatchlist</button>
-</form>
-
 {%else%}
-<form action="search-action">
-    <input type="text" name="stock" placeholder="Stock symbol">
-    <button>Search</button>
-</form>
-{%endif%}
-
-{%endblock%}
+<div class="login-box">
+  <div class="login-inner-box">
+    <div class="inner-inner-login">
+      <form action="search-action">
+        <input type="text" name="stock" placeholder="Stock symbol" class="form__field"/>
+        <button class="login">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+{%endif%} {%endblock%}

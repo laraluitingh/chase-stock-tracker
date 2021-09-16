@@ -1,5 +1,10 @@
 {% extends 'base.html' %} 
 {% block content %}
+{%if message==False%}
+<div class="incorrect-singup">
+  Incorrect Login details have been provided
+</div>
+{%endif%}
 
 <div class="login-box">
   <div class="login-inner-box">

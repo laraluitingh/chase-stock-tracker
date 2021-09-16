@@ -15,3 +15,12 @@ def sql_write(query, params):
   cur.execute(query, params)
   conn.commit()
   conn.close()
+
+def sql_select_without_params(query):
+  conn = psycopg2.connect("dbname=chase-stocks")
+  cur = conn.cursor()
+  cur.execute(query)
+  results = cur.fetchall()
+  cur.close()
+  conn.close()
+  return results

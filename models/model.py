@@ -1,4 +1,4 @@
-from database import sql_select, sql_write
+from database import sql_select, sql_write, sql_select_without_params
 import yahoo_fin.stock_info as si
 import requests
 import asyncio
@@ -54,22 +54,25 @@ def insert_user(email, first_name, last_name, password):
     sql_write("INSERT INTO users(email, first_name, last_name, password_hash) VALUES(%s, %s, %s, %s)", [email, first_name, last_name, password])
 
 def get_stock(stock):
-    data=si.get_quote_data(stock)
-    print(data["regularMarketChangePercent"])
-    stock=Stock(data["fullExchangeName"],
-    data["shortName"],
-    data["symbol"],
-    data["currency"],
-    data["regularMarketPrice"],
-    round(data["regularMarketChange"],2),
-    round(data["regularMarketChangePercent"],2),
-    data["regularMarketPreviousClose"],
-    data["regularMarketOpen"],
-    data["averageDailyVolume3Month"],
-    data["fiftyTwoWeekRange"],
-    data["regularMarketDayRange"]
-    )
-    return stock
+    try:
+        data=si.get_quote_data(stock)
+        print(data["regularMarketChangePercent"])
+        stock=Stock(data["fullExchangeName"],
+        data["shortName"],
+        data["symbol"],
+        data["currency"],
+        data["regularMarketPrice"],
+        round(data["regularMarketChange"],2),
+        round(data["regularMarketChangePercent"],2),
+        data["regularMarketPreviousClose"],
+        data["regularMarketOpen"],
+        data["averageDailyVolume3Month"],
+        data["fiftyTwoWeekRange"],
+        data["regularMarketDayRange"]
+        )
+        return stock
+    except:
+        return False
 
 #need to delete too slow
 # def get_NewsList():
@@ -155,6 +158,34 @@ def get_whatchlist(id):
         stock_whatched=UserWatchlist(row[0], row[1])
         whatchlist.append(stock_whatched)
     return whatchlist
+
+def update_user(first_name, last_name, email, user_id):
+    sql_write("UPDATE users set first_name=%s, last_name=%s, email=%s WHERE id=%s", [first_name,last_name, email, user_id])
+
+def delete_from_whatchlist(id,stock_code):
+    sql_write("DELETE FROM whatched_stocks WHERE id=%s AND stock_code=%s", [id, stock_code])
+
+def see_if_email_exists(email):
+        results=sql_select("SELECT * FROM users WHERE email=%s", [email])
+        if(results==[]):
+            return True
+        else:
+            return False
+
+def most_whatched():
+    results=sql_select_without_params("SELECT stock_code, COUNT(stock_code) AS Value_Occurence FROM whatched_stocks GROUP BY stock_code ORDER BY Value_Occurence DESC LIMIT 5;")
+    most_whatched=[]
+    for row in results:
+        most_whatched.append(row[0])
+    return most_whatched
+
+
+
+ 
+
+
+
+
 
 
 

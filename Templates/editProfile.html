@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<!-- <form action="/update_password" method="POST">
+    <label for="first_name">First Name: </label><input type="text" name="first_name" value="{{user.first_name}}">
+    <label for="last_name">Last Name: </label><input type="text" name="last_name" value="{{user.last_name}}">
+    <label for="email">Email: </label><input type="text" name="email" value="{{user.email}}">
+    <button>Save</button>
+</form> -->
+
+<div class="login-box">
+  <div class="login-inner-box">
+    <div class="inner-inner-login">
+      <h3 class="login-title">Update Profile</h3>
+      <form action="/update_user" method="POST">
+        <div class="form__group field">
+          <label for="first_name">First Name: </label><input type="text" name="first_name" value="{{user.first_name}}" class="form__field">
+          <br>
+          <label for="last_name">Last Name: </label><input type="text" name="last_name" value="{{user.last_name}}" class="form__field">
+          <br>
+          <label for="email">Email: </label><input type="text" name="email" value="{{user.email}}" class="form__field">
+        </div>
+        <button class="login">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}

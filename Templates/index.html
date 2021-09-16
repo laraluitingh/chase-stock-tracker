@@ -1,16 +1,10 @@
 {% extends 'base.html' %} {% block content %} {%for stock in stocks%}
-<div class="main-stocks">
-  <p class="stock-name">{{stock.short_name}}</p>
-  <p class="stock-price">{{stock.market_price}}</p>
-  <p class="stock-change">
-    <span>{{stock.market_change}}</span>
-    <span>{{stock.market_change_percent}}%</span>
-  </p>
-</div>
+
 {% endfor %}
 
+<h1 class="index-title">Top 100 Most active Stocks</h1>
 <div class="fixTableHead">
-  <table>
+  <table class="index-table">
     <thead>
       <tr>
         <th>Symbol</th>
