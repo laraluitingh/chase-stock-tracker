@@ -1,15 +1,25 @@
-{% extends 'base.html' %} {% block content %} {%if message%}
+{% extends 'base.html' %} 
+{% block content %} 
+{%if message%}
 <div class="incorrect-singup">{{message}}</div>
-{%endif%} {%if stock_search%}
+{%endif%} 
+{%if stock_search%}
 <div class="login-box">
   <div class="login-inner-box">
     <div class="inner-inner-login">
       <form action="search-action">
-        <input type="text" name="stock" placeholder="Stock symbol" class="form__field"/>
+        <input
+          type="text"
+          name="stock"
+          placeholder="Stock symbol"
+          class="form__field"
+        />
         <button class="login">Search</button>
       </form>
       <div>
-        <h1 class="stock-name-symbol">{{stock_data.short_name}} <span>({{stock_data.symbol}})</span></h1>
+        <h1 class="stock-name-symbol">
+          {{stock_data.short_name}} <span>({{stock_data.symbol}})</span>
+        </h1>
         <p>{{stock_data.name}}. Currency in {{stock_data.currency}}</p>
         <h4>
           {{stock_data.market_price}} <span>{{stock_data.market_change}}</span>
@@ -36,32 +46,42 @@
             <td>52 Week Range:</td>
             <td>{{stock_data.w_range}}</td>
           </tr>
-      </table>
-      {%if user%}
-      <form action="/add_to_whatchlist" method="POST">
-        <input
-          type="text"
-          name="stock_code"
-          style="display: none"
-          value="{{stock_data.symbol}}"
-        />
-        <button class="login">Add to Watchlist</button>
-      </form>
-      {%else%}
-      <p>To add stock to your watchlist <a href="/account" class="clickable-profile">login here</a></p>
-      {%endif%}
+        </table>
+        {%if user%}
+        <form action="/add_to_whatchlist" method="POST">
+          <input
+            type="text"
+            name="stock_code"
+            style="display: none"
+            value="{{stock_data.symbol}}"
+          />
+          <button class="login">Add to Watchlist</button>
+        </form>
+        {%else%}
+        <p>
+          To add stock to your watchlist
+          <a href="/account" class="clickable-profile">login here</a>
+        </p>
+        {%endif%}
+      </div>
     </div>
   </div>
-</div>
-{%else%}
-<div class="login-box">
-  <div class="login-inner-box">
-    <div class="inner-inner-login">
-      <form action="search-action">
-        <input type="text" name="stock" placeholder="Stock symbol" class="form__field"/>
-        <button class="login">Search</button>
-      </form>
+  {%else%}
+  <div class="login-box">
+    <div class="login-inner-box">
+      <div class="inner-inner-login">
+        <form action="search-action">
+          <input
+            type="text"
+            name="stock"
+            placeholder="Stock symbol"
+            class="form__field"
+          />
+          <button class="login">Search</button>
+        </form>
+      </div>
     </div>
   </div>
+  {%endif%} 
+  {%endblock%}
 </div>
-{%endif%} {%endblock%}

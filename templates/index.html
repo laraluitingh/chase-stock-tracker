@@ -1,44 +1,46 @@
-{% extends 'base.html' %} {% block content %} {%for stock in stocks%}
-
-{% endfor %}
-
+{% extends 'base.html' %} 
+{% block content %} 
 <div class="homepage-body">
-<h1 class="index-title">Top 100 Most active Stocks</h1>
-<div class="fixTableHead">
-  <table class="index-table">
-    <thead>
-      <tr>
-        <th>Symbol</th>
-        <th>Name</th>
-        <th>Price(Intraday)</th>
-        <th>Change</th>
-        <th>% Change</th>
-        <th>Volume</th>
-        <th>Avg Volume(3 months)</th>
-        <th>Market Cap</th>
-        <th>PE Ratio (TTM)</th>
-      </tr>
-    </thead>
-    <tbody>
+  <h1 class="index-title">Top 100 Most active Stocks</h1>
+  <div class="fixTableHead">
+    <table class="index-table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Price(Intraday)</th>
+          <th>Change</th>
+          <th>% Change</th>
+          <th>Volume</th>
+          <th>Avg Volume(3 months)</th>
+          <th>Market Cap</th>
+          <th>PE Ratio (TTM)</th>
+        </tr>
+      </thead>
+      <tbody>
         {%for i in active_stocks%}
         <tr>
-            <td> <a href="/search-action?stock={{i['Symbol']}}" class="clickable-profile">{{i["Symbol"]}}</a></td>
-            <td>{{i["Name"]}}</td>
-            <td>{{i["Price (Intraday)"]}}</td>
-            <td>{{i["Change"]}}</td>
-            <td>{{i["% Change"]}}</td>
-            <td>{{i["Volume"]}}</td>
-            <td>{{i["Avg Vol (3 month)"]}}</td>
-            <td>{{i["Market Cap"]}}</td>
-            <td>{{i["PE Ratio (TTM)"]}}</td>
-        
+          <td>
+            <a
+              href="/search-action?stock={{i['Symbol']}}"
+              class="clickable-profile"
+              >{{i["Symbol"]}}</a
+            >
+          </td>
+          <td>{{i["Name"]}}</td>
+          <td>{{i["Price (Intraday)"]}}</td>
+          <td>{{i["Change"]}}</td>
+          <td>{{i["% Change"]}}</td>
+          <td>{{i["Volume"]}}</td>
+          <td>{{i["Avg Vol (3 month)"]}}</td>
+          <td>{{i["Market Cap"]}}</td>
+          <td>{{i["PE Ratio (TTM)"]}}</td>
         </tr>
         {%endfor%}
-      
-    </tbody>
-  </table>
-</div>
-<h1 class="index-title">Most Watched stocks</h1>
+      </tbody>
+    </table>
+  </div>
+  <h1 class="index-title">Most Watched stocks</h1>
   <div class="popular-stocks">
     <table class="index-table">
       <thead>
@@ -54,28 +56,30 @@
           <th>52 Week range</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody></tbody>
       <tbody>
         {%for stocks in most_whatched_stocks%}
         <tr>
-            <td><a href="/search-action?stock={{stocks.symbol}}" class="clickable-profile">{{stocks.symbol}}</a></td>
-            <td>{{stocks.short_name}}</td>
-            <td>{{stocks.market_price}}</td>
-            <td>{{stocks.market_change}}</td>
-            <td>{{stocks.market_change_percent}}</td>
-            <td>{{stocks.previous_close}}</td>
-            <td>{{stocks.market_open}}</td>
-            <td>{{stocks.avg_volume}}</td>
-            <td>{{stocks.w_range}}</td>
-        
+          <td>
+            <a
+              href="/search-action?stock={{stocks.symbol}}"
+              class="clickable-profile"
+              >{{stocks.symbol}}</a
+            >
+          </td>
+          <td>{{stocks.short_name}}</td>
+          <td>{{stocks.market_price}}</td>
+          <td>{{stocks.market_change}}</td>
+          <td>{{stocks.market_change_percent}}</td>
+          <td>{{stocks.previous_close}}</td>
+          <td>{{stocks.market_open}}</td>
+          <td>{{stocks.avg_volume}}</td>
+          <td>{{stocks.w_range}}</td>
         </tr>
         {%endfor%}
-      
-    </tbody>
-
+      </tbody>
     </table>
   </div>
-
 </div>
 
 {%endblock%}

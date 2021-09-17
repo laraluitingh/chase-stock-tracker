@@ -1,9 +1,7 @@
 {% extends 'base.html' %} 
-{% block content %}
+{% block content %} 
 {%if message==False%}
-<div class="incorrect-singup">
-  Incorrect Login details have been provided
-</div>
+<div class="incorrect-singup">Incorrect Login details have been provided</div>
 {%endif%}
 
 <div class="login-box">
@@ -31,8 +29,8 @@
       </form>
       <br />
       <span class="sign-up-button">You don't have a account? </span>
-        <br>
-        <a href="/signup" class="sign-up-button" >sign up here</a>
+      <br />
+      <a href="/signup" class="sign-up-button">sign up here</a>
     </div>
   </div>
 </div>

@@ -9,12 +9,12 @@ nav ul li {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   min-height: 100%;
 }
 
-*{
-    margin:0;
+* {
+  margin: 0;
 }
 
 html,
@@ -54,10 +54,9 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
   color: #fb8122;
 }
-
 
 .main-stocks {
   display: inline-block;
@@ -81,7 +80,7 @@ nav ul li a:hover{
 .fixTableHead {
   overflow-y: auto;
   height: 600px;
-  color:white;
+  color: white;
 }
 
 .fixTableHead thead th {
@@ -94,9 +93,9 @@ table {
   width: 80%;
 }
 
-.table-profile{
+.table-profile {
   border-collapse: separate;
-  width:fit-content;
+  width: fit-content;
 }
 
 th,
@@ -107,15 +106,19 @@ th {
   background: rgb(105 102 102);
 }
 
-td{
-  background:rgb(225,225, 225, 0.05);
+td {
+  background: rgb(225, 225, 225, 0.05);
 }
 
 /* css for login inpired by https://codepen.io/khadkamhn/pen/ZGvPLo */
 
 .login-box {
   background-color: rgba(0, 0, 0, 0.37);
-  background:linear-gradient( rgba(0, 0, 0, 0.75) 100%, rgba(0, 0, 0, 0.75)100%),url("https://i.ytimg.com/vi/Zqq7cPxg_Yc/maxresdefault.jpg");
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.75) 100%,
+      rgba(0, 0, 0, 0.75) 100%
+    ),
+    url("https://i.ytimg.com/vi/Zqq7cPxg_Yc/maxresdefault.jpg");
   height: 100%;
   min-height: 100vh;
   background-size: cover;
@@ -126,110 +129,108 @@ td{
   justify-content: center;
 }
 
-.login-inner-box{
-    height:fit-content;
-    width:fit-content;
-    background-color:#1d2228;
-    color:white;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:50px;
+.login-inner-box {
+  height: fit-content;
+  width: fit-content;
+  background-color: #1d2228;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
 }
 
-.inner-inner-login{
-    font-size: 25px;
+.inner-inner-login {
+  font-size: 25px;
 }
 
-.form__field{
-   border: none;
-   border-radius: 5px;
-   font-size: 20px;
-   margin-top: 10px;
-   width:300px;
-   padding:10px;
+.form__field {
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-top: 10px;
+  width: 300px;
+  padding: 10px;
 }
 
-.login{
-    padding:0.3em 1.2em;
-    margin:0 0.3em 0.3em 0;
-    border-radius:2em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    background-color:#fb8122;
-    text-align:center;
-    transition: all 0.2s;
-    border: none;
-    font-size: 20px;
-    margin-top: 20px;
+.login {
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #fb8122;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
-.login:hover{
-    background-color:#d37126;
+.login:hover {
+  background-color: #d37126;
 }
 
-.sign-up-button{
-    font-size: 18px;
+.sign-up-button {
+  font-size: 18px;
 }
 
-.whatched-stocks{
+.whatched-stocks {
   overflow-y: auto;
   height: 300px;
   font-size: 20px;
 }
 
-.incorrect-singup{
+.incorrect-singup {
   color: white;
   background: red;
   font-size: 25px;
-  text-align:center;
-}
-
-.index-table{
   text-align: center;
 }
 
-.index-title{
+.index-table {
+  text-align: center;
+}
+
+.index-title {
   color: white;
   font-size: 25px;
   font-weight: normal;
   padding-top: 30px;
 }
 
-.sign-out{
-  display: inline-block;
-
-}
-
-
-.edit{
+.sign-out {
   display: inline-block;
 }
 
-.clickable-profile{
-  color:#fb8122;
+.edit {
+  display: inline-block;
 }
 
-.clickable-profile:hover{
-  color:white;
+.clickable-profile {
+  color: #fb8122;
 }
 
-.sign-up-button{
-  color:#fb8122;
+.clickable-profile:hover {
+  color: white;
 }
 
-.sign-up:hover{
-  color:white;
+.sign-up-button {
+  color: #fb8122;
 }
 
-.popular-stocks{
+.sign-up:hover {
+  color: white;
+}
+
+.popular-stocks {
   overflow-y: auto;
   height: fit-content;
-  color:white;
+  color: white;
 }
 
 .popular-stocks thead th {
@@ -238,49 +239,45 @@ td{
   font-weight: normal;
 }
 
-.homepage-body{
-  background: linear-gradient( rgba(0, 0, 0, 0.75) 100%, rgba(0, 0, 0, 0.75)100%);
-    height: 100%;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding-left: 135px;
+.homepage-body {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.75) 100%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  height: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-left: 135px;
 }
 
-.grid-container{
+.grid-container {
   display: grid;
 }
 
-.edit-label{
-  padding-top:15px
+.edit-label {
+  padding-top: 15px;
 }
 
-.login-title{
-  font-size:30px;
+.login-title {
+  font-size: 30px;
 }
 
-.stock-data-table{
+.stock-data-table {
   width: fit-content;
-  margin-top:25px;
+  margin-top: 25px;
   margin-bottom: 25px;
   font-size: 20px;
   width: 100%;
   border-collapse: separate;
 }
 
-.watchlist-title{
-  padding-top:30px
-}
-
-.stock-name-symbol{
-  font-size: 40px;
+.watchlist-title {
   padding-top: 30px;
 }
 
-
-
-
-
-
-
+.stock-name-symbol {
+  font-size: 40px;
+  padding-top: 30px;
+}
