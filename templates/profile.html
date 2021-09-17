@@ -5,30 +5,34 @@
       <h1 class="login-title">Your Profile</h1>
       <p>Name: <span>{{user.first_name}} {{user.last_name}}</span></p>
       <p>Email: <span>{{user.email}}</span></p>
-       <form action="/edit-profile">
+       <form action="/edit-profile" class="edit">
       <button class="login">Edit</button>
     </form>
-      <form action="/logout">
+      <form action="/logout" class="sign-out">
         <button class="login">Sign out</button>
       </form>
 
-      <h1>Your whatchlist</h1>
-      <div class="whatched-stocks">
-        <table>
+      <h1 class="login-title watchlist-title">Your watchlist</h1>
+        {%if whatchlist | length ==0 %}
+        <p>You are not keeping track of any stocks search for to watch <a href="/search" class="clickable-profile">here</a></p>
+        {%else%}
+        <div class="whatched-stocks">
+        <table class="table-profile">
           {%for stock in whatchlist%}
           <tr>
             <td>
               <a href="/search-action?stock={{stock.symbol}}"
-                >{{stock.short_name}}</a
+                class="clickable-profile">{{stock.short_name}}</a
               >
             </td>
             <td>{{stock.market_price}}</td>
             <td>{{stock.market_change_percent}}%</td>
-            <td><a href="/delete_from_whatchlist/{{stock.symbol}}">Delete</a></td>
+            <td><a href="/delete_from_whatchlist/{{stock.symbol}}" class="clickable-profile">Delete</a></td>
           </tr>
           {%endfor%}
         </table>
       </div>
+      {%endif%}
     </div>
   </div>
 </div>

@@ -14,10 +14,11 @@ import os
 
 from models.model import get_user, insert_user, get_stock, addToWhatchList, get_user_by_id, get_whatchlist, update_user, delete_from_whatchlist, see_if_email_exists, most_whatched
 
+SECRET_KEY = os.environ.get("SECRET_KEY", "pretend key for testing only")
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '123Lara'
+app.config['SECRET_KEY'] = SECRET_KEY
 
 DB_URL = os.environ.get("DATABASE_URL", "dbname=chase-stocks")
 
@@ -36,6 +37,7 @@ def getIndexPage():
     for stock in most_popular_stocks:
         stock_class=get_stock(stock)
         most_whatched_stocks.append(stock_class)
+    print(most_whatched)
     return render_template('index.html', active_stocks=active_stocks, most_whatched_stocks=most_whatched_stocks)
 
 
@@ -54,9 +56,8 @@ def getLoginPageAction():
             session['user_id'] = get_user(email).id
             return redirect('/account')
         else:
-            render_template('account.html', message=False)
+            return render_template('account.html', message=False)
     except:
-
         return render_template('account.html', message=False)
 
 
@@ -117,18 +118,26 @@ def searchStock():
     if(stock_data==False):
         return render_template('search.html', message="Stock symbol does not exist")
     else:
-        stock_search = True
-        news1 = news.get_yf_rss(stock)
-        print(news1)
-        return render_template('search.html', stock_data=stock_data, stock_search=stock_search)
+        user_id = session.get('user_id') 
+        print(user_id)
+        if (user_id==None):
+            stock_search = True
+            user=False
+            return render_template('search.html', stock_data=stock_data, stock_search=stock_search, user=user)
+        else:
+            stock_search = True
+            user=True
+            return render_template('search.html', stock_data=stock_data, stock_search=stock_search, user=user)
 
 
 @app.route('/add_to_whatchlist', methods=['POST'])
 def add_to_whatchlist():
-    user_id = session.get('user_id')
-    stock_code = request.form.get('stock_code')
-    addToWhatchList(stock_code, user_id)
-    return redirect('/search')
+        user_id = session.get('user_id') 
+        print(user_id)
+        stock_code = request.form.get('stock_code')
+        addToWhatchList(stock_code, user_id)
+        return redirect(f'/search-action?stock={stock_code}')
+
 
 @app.route('/logout')
 def log_out():

@@ -173,10 +173,11 @@ def see_if_email_exists(email):
             return False
 
 def most_whatched():
-    results=sql_select_without_params("SELECT stock_code, COUNT(stock_code) AS Value_Occurence FROM whatched_stocks GROUP BY stock_code ORDER BY Value_Occurence DESC LIMIT 5;")
+    results=sql_select_without_params("SELECT stock_code, COUNT(stock_code) AS Value_Occurence FROM whatched_stocks GROUP BY stock_code ORDER BY Value_Occurence DESC LIMIT 10;")
     most_whatched=[]
     for row in results:
         most_whatched.append(row[0])
+    print(most_whatched)
     return most_whatched
 
 

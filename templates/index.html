@@ -2,6 +2,7 @@
 
 {% endfor %}
 
+<div class="homepage-body">
 <h1 class="index-title">Top 100 Most active Stocks</h1>
 <div class="fixTableHead">
   <table class="index-table">
@@ -21,7 +22,7 @@
     <tbody>
         {%for i in active_stocks%}
         <tr>
-            <td>{{i["Symbol"]}}</td>
+            <td> <a href="/search-action?stock={{i['Symbol']}}" class="clickable-profile">{{i["Symbol"]}}</a></td>
             <td>{{i["Name"]}}</td>
             <td>{{i["Price (Intraday)"]}}</td>
             <td>{{i["Change"]}}</td>
@@ -37,16 +38,44 @@
     </tbody>
   </table>
 </div>
+<h1 class="index-title">Most Watched stocks</h1>
+  <div class="popular-stocks">
+    <table class="index-table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Market Price</th>
+          <th>Market Change</th>
+          <th>Market Change(%)</th>
+          <th>Previous Close</th>
+          <th>Open</th>
+          <th>Average Volume</th>
+          <th>52 Week range</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tbody>
+        {%for stocks in most_whatched_stocks%}
+        <tr>
+            <td><a href="/search-action?stock={{stocks.symbol}}" class="clickable-profile">{{stocks.symbol}}</a></td>
+            <td>{{stocks.short_name}}</td>
+            <td>{{stocks.market_price}}</td>
+            <td>{{stocks.market_change}}</td>
+            <td>{{stocks.market_change_percent}}</td>
+            <td>{{stocks.previous_close}}</td>
+            <td>{{stocks.market_open}}</td>
+            <td>{{stocks.avg_volume}}</td>
+            <td>{{stocks.w_range}}</td>
+        
+        </tr>
+        {%endfor%}
+      
+    </tbody>
 
-<!-- Takes to long deleting -->
-<!-- {%for news in news_list%}
-<div>
-    <h4><a href="{{news.url}}">{{news.title}}</a></h4>
-    <img src="{{news.image}}" alt="dsiplay-picture">
-    <p>{{news.pubdate}}</p>
+    </table>
+  </div>
+
 </div>
-
-
-{% endfor %} -->
 
 {%endblock%}

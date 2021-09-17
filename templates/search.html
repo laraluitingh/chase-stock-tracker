@@ -9,21 +9,35 @@
         <button class="login">Search</button>
       </form>
       <div>
-        <h1>{{stock_data.short_name}} <span>({{stock_data.symbol}})</span></h1>
+        <h1 class="stock-name-symbol">{{stock_data.short_name}} <span>({{stock_data.symbol}})</span></h1>
         <p>{{stock_data.name}}. Currency in {{stock_data.currency}}</p>
         <h4>
           {{stock_data.market_price}} <span>{{stock_data.market_change}}</span>
           <span>{{stock_data.market_change_percent}}%</span>
         </h4>
-        <ul>
-          <li>Previous Close:{{stock_data.previous_close}}</li>
-          <li>Open: {{stock_data.market_open}}</li>
-          <li>Average Volume: {{stock_data.avg_volume}}</li>
-          <li>Day's Range: {{stock_data.day_range}}</li>
-          <li>52 Week Range: {{stock_data.w_range}}</li>
-        </ul>
-      </div>
-
+        <table class="stock-data-table">
+          <tr>
+            <td>Previous Close</td>
+            <td>{{stock_data.previous_close}}</td>
+          </tr>
+          <tr>
+            <td>Open</td>
+            <td>{{stock_data.market_open}}</td>
+          </tr>
+          <tr>
+            <td>Average Volume</td>
+            <td>{{stock_data.avg_volume}}</td>
+          </tr>
+          <tr>
+            <td>Day's Range</td>
+            <td>{{stock_data.day_range}}</td>
+          </tr>
+          <tr>
+            <td>52 Week Range:</td>
+            <td>{{stock_data.w_range}}</td>
+          </tr>
+      </table>
+      {%if user%}
       <form action="/add_to_whatchlist" method="POST">
         <input
           type="text"
@@ -31,8 +45,11 @@
           style="display: none"
           value="{{stock_data.symbol}}"
         />
-        <button class="login">Add to Whatchlist</button>
+        <button class="login">Add to Watchlist</button>
       </form>
+      {%else%}
+      <p>To add stock to your watchlist <a href="/account" class="clickable-profile">login here</a></p>
+      {%endif%}
     </div>
   </div>
 </div>

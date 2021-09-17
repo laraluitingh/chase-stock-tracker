@@ -11,12 +11,10 @@
     <div class="inner-inner-login">
       <h3 class="login-title">Update Profile</h3>
       <form action="/update_user" method="POST">
-        <div class="form__group field">
-          <label for="first_name">First Name: </label><input type="text" name="first_name" value="{{user.first_name}}" class="form__field">
-          <br>
-          <label for="last_name">Last Name: </label><input type="text" name="last_name" value="{{user.last_name}}" class="form__field">
-          <br>
-          <label for="email">Email: </label><input type="text" name="email" value="{{user.email}}" class="form__field">
+        <div class="grid-container">
+          <label for="first_name" class="edit-label">First Name</label><input type="text" name="first_name" value="{{user.first_name}}" class="form__field ">
+          <label for="last_name" class="edit-label">Last Name</label><input type="text" name="last_name" value="{{user.last_name}}" class="form__field ">
+          <label for="email" class="edit-label">Email</label><input type="text" name="email" value="{{user.email}}" class="form__field ">
         </div>
         <button class="login">Save</button>
       </form>
