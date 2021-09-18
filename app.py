@@ -27,8 +27,9 @@ DB_URL = os.environ.get("DATABASE_URL", "dbname=chase-stocks")
 
 @app.route('/')
 def getIndexPage():
-    data = si.get_day_most_active()
+    data = si.get_day_gainers()
     active_stocks = json.loads(data.to_json(orient='records'))
+    print(active_stocks)
     print(type(active_stocks))
     most_popular_stocks = most_whatched()
     most_whatched_stocks = []
@@ -36,7 +37,7 @@ def getIndexPage():
         stock_class = get_stock(stock)
         most_whatched_stocks.append(stock_class)
     print(most_whatched)
-    return render_template('index.html', active_stocks=active_stocks, most_whatched_stocks=most_whatched_stocks)
+    return render_template('index.html', most_whatched_stocks=most_whatched_stocks, active_stocks=active_stocks)
 
 
 @app.route('/login_action', methods=['POST'])
