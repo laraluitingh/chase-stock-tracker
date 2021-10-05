@@ -1,9 +1,6 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{%if message%}
+{% extends 'base.html' %} {% block content %} {%if message%}
 <div class="incorrect-singup">{{message}}</div>
-{%endif%} 
-{%if stock_search%}
+{%endif%} {%if stock_search%}
 <div class="login-box">
   <div class="login-inner-box">
     <div class="inner-inner-login">
@@ -13,6 +10,8 @@
           name="stock"
           placeholder="Stock symbol"
           class="form__field"
+          id="searchField2"
+          autocomplete="off"
         />
         <button class="login">Search</button>
       </form>
@@ -71,17 +70,23 @@
     <div class="login-inner-box">
       <div class="inner-inner-login">
         <form action="search-action">
-          <input
-            type="text"
-            name="stock"
-            placeholder="Stock symbol"
-            class="form__field"
-          />
+          <div class="search-bar">
+            <input
+              type="text"
+              name="stock"
+              placeholder="Stock symbol"
+              class="form__field"
+              id="searchField"
+              autocomplete="off"
+            />
+          </div>
+          <div id="dropdown">
+
+          </div>
           <button class="login">Search</button>
         </form>
       </div>
     </div>
   </div>
-  {%endif%} 
-  {%endblock%}
+  {%endif%} {%endblock%}
 </div>

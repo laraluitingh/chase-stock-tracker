@@ -45,6 +45,5 @@ Heroku website: https://quiet-citadel-28182.herokuapp.com/
   - Have stock prices adjust on website in realtime without page having to be reloaded
   - Allow users to get more information from stocks
 
-  ## API Documention
-  http://theautomatic.net/yahoo_fin-documentation/
+
 
