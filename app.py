@@ -160,6 +160,13 @@ def deleteFromWhatchlist(symbol):
     delete_from_whatchlist(user_id, symbol)
     return redirect('/account')
 
+@app.route('/check_stock/<symbol>')
+def checkIfStockExists(symbol):
+    stock_data=get_stock(symbol)
+    if stock_data==False:
+        return "true"
+    else:
+        return "false"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=3000)

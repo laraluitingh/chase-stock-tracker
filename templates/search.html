@@ -1,7 +1,17 @@
-{% extends 'base.html' %} {% block content %} {%if message%}
-<div class="incorrect-singup">{{message}}</div>
+{% extends 'base.html' %} 
+{% block head %} 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<script defer src="/static/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{%endblock%}
+{% block content %} 
+{%if message%}
+<input class="stockDoesNotExist" id="notExist" type="text" value="{{message}}">
 {%endif%} {%if stock_search%}
-<div class="login-box">
+<div id="for-error-message">
+
+</div>
+<div class="login-box" id="search-body"> 
   <div class="login-inner-box">
     <div class="inner-inner-login">
       <form action="search-action">
@@ -10,9 +20,12 @@
           name="stock"
           placeholder="Stock symbol"
           class="form__field"
-          id="searchField2"
+          id="searchField"
           autocomplete="off"
         />
+        <div id="dropdown">
+
+        </div>
         <button class="login">Search</button>
       </form>
       <div>
@@ -66,8 +79,11 @@
     </div>
   </div>
   {%else%}
-  <div class="login-box">
-    <div class="login-inner-box">
+  <div id="for-error-message">
+
+  </div>
+  <div class="login-box" id="search-body">
+    <div class="login-inner-box" id="search-box">
       <div class="inner-inner-login">
         <form action="search-action">
           <div class="search-bar">

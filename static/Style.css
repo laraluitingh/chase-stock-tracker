@@ -38,7 +38,7 @@ nav {
   line-height: 80px;
   padding: 0 120px;
   font: bold;
-  display: inline-block;
+  display: inline;
   color: #fb8122;
 }
 
@@ -81,6 +81,8 @@ nav ul li a:hover {
   overflow-y: auto;
   height: 600px;
   color: white;
+  padding-bottom: 30px;
+  width:80%;
 }
 
 .fixTableHead thead th {
@@ -201,6 +203,7 @@ td {
   font-size: 25px;
   font-weight: normal;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .sign-out {
@@ -229,8 +232,10 @@ td {
 
 .popular-stocks {
   overflow-y: auto;
-  height: fit-content;
+  max-height: 600px;
   color: white;
+  padding-bottom: 30px;
+  width: 80%;
 }
 
 .popular-stocks thead th {
@@ -249,7 +254,9 @@ td {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-left: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .grid-container {
@@ -350,10 +357,46 @@ td {
     list-style: none;
     padding: 0;
     font-size: 17px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
 }
 
 .dropdown-list-item:hover{
     background-color: rgb(130, 140, 143);
 }
+
+table.index-table{
+  width:100%;
+}
+
+@media (max-width: 450px){
+  .logo{
+    display: block;
+    padding-left:50px;
+  }
+
+}
+
+div#dropdown{
+  position: relative;
+}
+
+.stockDoesNotExist{
+  display: none;
+}
+
+.symbol-dropdown{
+  float: left;
+}
+
+.name-dropdown{
+  float:right;
+}
+
+
+
 
 
