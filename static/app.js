@@ -15,7 +15,7 @@ const searchBox = document.getElementById("search-box");
 function checkIfStockExists(symbol, list, object) {
   // call the call back function when when i have the data
   axios
-    .get(`http://127.0.0.1:5000/check_stock/${symbol}`)
+    .get(`/check_stock/${symbol}`)
     .then((response) => {
 
       return response.data;
