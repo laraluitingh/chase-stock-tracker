@@ -340,6 +340,14 @@ td {
     margin-right: 0px;
   }
 
+  .form__field{
+    width:90%;
+  }
+
+  .login-inner-box{
+    padding: 6%;
+  }
+
 
 }
 
