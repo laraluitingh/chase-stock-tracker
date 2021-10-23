@@ -36,9 +36,9 @@ Heroku website: https://quiet-citadel-28182.herokuapp.com/
 
 4. Install the following: flask, psycopg2, bcrypt. Run the following commands in your terminal
 
-     - `pip intall flask`
-     - `pip intall psycopg2`
-     - `pip intall bcrypt`
+     - `pip install flask`
+     - `pip install psycopg2`
+     - `pip install bcrypt`
 
 5. Install th yahoo_fin api http://theautomatic.net/yahoo_fin-documentation/#installation
 
